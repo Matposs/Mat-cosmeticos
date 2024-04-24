@@ -7,32 +7,32 @@ const produtos = [
     {
         nome: "Shampoo masculino",
         descricao: "Shampoo para cabelos castanhos",
-        preco: "R$ 100,00",
+        preco: "R$ 35,90",
         imagem: "./src/cabeloMasc01.png"
     },
     {
         nome: "Batom vermelho",
         descricao: "Batom vermelho para festas",
-        preco: "R$ 200,00",
+        preco: "R$ 39,90",
         imagem: "./src/batom01.png"
     },
     {
         nome: "Creme de rosto",
         descricao: "Creme noturno para o rosto",
-        preco: "R$ 200,00",
+        preco: "R$ 22,90",
         imagem: "./src/creme01.png"
     },
     {
         nome: "Shampoo anticaspa",
         descricao: "Shampoo para tratamento da caspa",
-        preco: "R$ 200,00",
+        preco: "R$ 31,50",
         imagem: "./src/produto01.png"
     },
 ];
 const produtoEmDestaque = {
     nome: "Batom Vermelho",
     descricao: "Batom vermelho para festas",
-    preco: "R$ 200,00",
+    preco: "R$ 39,90",
     imagem: "./src/batom01.png"
 }
 
