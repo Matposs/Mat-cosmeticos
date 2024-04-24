@@ -1,0 +1,74 @@
+[
+    {
+        "nome": "Sabonete simples",
+        "preco": 15.90,
+        "descricao": "Sabonete diário",
+        "src": "/src/higiene01.png"
+    },
+    {
+        "nome": "Sabonete flores",
+        "preco": 20.99,
+        "descricao": "Sabonete feito com carinho para você",
+        "src": "/src/higiene02.png"
+    },
+    {
+        "nome": "Sabonete de frutas",
+        "preco": 25.90,
+        "descricao": "Sabonete de frutas natural",
+        "src": "/src/higiene03.png"
+    },
+    {
+        "nome": "Pasta dental Unipastas",
+        "preco": 59.90,
+        "descricao": "Pasta dental especial",
+        "src": "/src/higiene04.png"
+    },
+    {
+        "nome": "Kit pasta e escova",
+        "preco": 25.90,
+        "descricao": "Promo no Kit com pasta e escova",
+        "src": "/src/higiene05.png"
+    },
+    {
+        "nome": "Desodorante corporal",
+        "preco": 39.90,
+        "descricao": "Desodorante corporal 48h",
+        "src": "/src/higiene06.png"
+    },
+    {
+        "nome": "Desodorante feminino",
+        "preco": 39.90,
+        "descricao": "Desodorante potente 72h",
+        "src": "/src/higiene07.png"
+    },
+    {
+        "nome": "Sabão natural de coco",
+        "preco": 21.90,
+        "descricao": "Limpeza e cuidado com a natureza",
+        "src": "/src/higiene01.png"
+    },
+    {
+        "nome": "Desodorante corporal noturno",
+        "preco": 29.90,
+        "descricao": "Desodorante pós-banho",
+        "src": "/src/higiene07.png"
+    },
+    {
+        "nome": "Escova de dente Blym",
+        "preco": 19.90,
+        "descricao": "Escova de dente Blym com pasta de brinde",
+        "src": "/src/higiene05.png"
+    },
+    {
+        "nome": "Sabonete de banho",
+        "preco": 19.90,
+        "descricao": "Sabonete de banho cuidado pessoal",
+        "src": "/src/higiene02.png"
+    },
+    {
+        "nome": "Sabonete Dreamy",
+        "preco": 29.90,
+        "descricao": "Sabonete para banhos",
+        "src": "/src/higiene03.png"
+    }
+]

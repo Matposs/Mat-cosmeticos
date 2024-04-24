@@ -1,0 +1,74 @@
+[
+    {
+        "nome": "Kit skin-care",
+        "preco": 185.90,
+        "descricao": "Creme renovador de uso diário",
+        "src": "/src/estetica01.png"
+    },
+    {
+        "nome": "Kit cuidados skin-care",
+        "preco": 290.99,
+        "descricao": "Recupera o aspecto jovem da pele",
+        "src": "/src/estetica02.png"
+    },
+    {
+        "nome": "Creme facial",
+        "preco": 99.90,
+        "descricao": "Creme facial para antes de dormir",
+        "src": "/src/estetica03.png"
+    },
+    {
+        "nome": "Veneno de cobra",
+        "preco": 199.90,
+        "descricao": "Elimina as rugas e marcas de expressão",
+        "src": "/src/estetica04.png"
+    },
+    {
+        "nome": "Kit Limpa e Protege",
+        "preco": 185.90,
+        "descricao": "Kit especial com produtos naturais",
+        "src": "/src/estetica05.png"
+    },
+    {
+        "nome": "Creme de limão",
+        "preco": 99.90,
+        "descricao": "Creme especial de limão com brindes",
+        "src": "/src/estetica06.png"
+    },
+    {
+        "nome": "Protetor solar",
+        "preco": 109.90,
+        "descricao": "Protetor solar refinado",
+        "src": "/src/estetica04.png"
+    },
+    {
+        "nome": "Creme estético",
+        "preco": 99.90,
+        "descricao": "Creme estético clean",
+        "src": "/src/estetica02.png"
+    },
+    {
+        "nome": "Skin-care natural-one",
+        "preco": 119.90,
+        "descricao": "Pague o creme e leve o kit natural-one",
+        "src": "/src/estetica02.png"
+    },
+    {
+        "nome": "Kit especyal",
+        "preco": 199.90,
+        "descricao": "Kit especyal francês",
+        "src": "/src/estetica01.png"
+    },
+    {
+        "nome": "Kit masculino diário",
+        "preco": 189.90,
+        "descricao": "Kit cuidado com o homem",
+        "src": "/src/estetica05.png"
+    },
+    {
+        "nome": "Creme de mão",
+        "preco": 29.90,
+        "descricao": "Creme de uso diários",
+        "src": "/src/estetica03.png"
+    }
+]

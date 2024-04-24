@@ -1,0 +1,74 @@
+[
+    {
+        "nome": "Creme de cabelo feminino",
+        "preco": 85.90,
+        "descricao": "Creme para cabelos lisos",
+        "src": "/src/cabeloFem01.png"
+    },
+    {
+        "nome": "Shampoo masculino anticaspa",
+        "preco": 90.99,
+        "descricao": "Shampoo para tratamento de caspa",
+        "src": "/src/cabeloMasc01.png"
+    },
+    {
+        "nome": "Kit de cabelo feminino",
+        "preco": 150.90,
+        "descricao": "Kit para cabelos delicados",
+        "src": "/src/cabeloFem02.png"
+    },
+    {
+        "nome": "Creme de cabelo feminino",
+        "preco": 59.90,
+        "descricao": "Creme para cabelos enrolados",
+        "src": "/src/cabeloFem03.png"
+    },
+    {
+        "nome": "Creme de cabelo feminino",
+        "preco": 85.90,
+        "descricao": "Creme para cabelos rebeldes",
+        "src": "/src/cabeloFem04.png"
+    },
+    {
+        "nome": "Creme de cabelo feminino",
+        "preco": 99.90,
+        "descricao": "Creme para cabelos encaracolados",
+        "src": "/src/cabeloFem05.png"
+    },
+    {
+        "nome": "Creme de cabelo feminino",
+        "preco": 109.90,
+        "descricao": "Creme para os dias de cabelo ruim",
+        "src": "/src/cabeloFem06.png"
+    },
+    {
+        "nome": "Condicionador feminino",
+        "preco": 159.90,
+        "descricao": "Condicionador que não danifica",
+        "src": "/src/cabeloFem07.png"
+    },
+    {
+        "nome": "Creme de cabelo feminino",
+        "preco": 119.90,
+        "descricao": "Creme para os dias de frio",
+        "src": "/src/cabeloFem06.png"
+    },
+    {
+        "nome": "Condicionador reparador",
+        "preco": 109.90,
+        "descricao": "Condicionador que tambem nutre",
+        "src": "/src/cabeloFem01.png"
+    },
+    {
+        "nome": "Kit masculino",
+        "preco": 169.90,
+        "descricao": "Kit de cuidado de cabelos masculino",
+        "src": "/src/cabeloMasc01.png"
+    },
+    {
+        "nome": "Shampoo Natural",
+        "preco": 129.90,
+        "descricao": "Shampoo que respeita você e o meio ambiente",
+        "src": "/src/produto01.png"
+    }
+]

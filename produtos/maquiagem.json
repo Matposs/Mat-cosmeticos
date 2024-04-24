@@ -1,0 +1,74 @@
+[
+    {
+        "nome": "Maquiagem simples",
+        "preco": 10.90,
+        "descricao": "Maquiagem simples 2 cores",
+        "src": "/src/maquiagem01.png"
+    },
+    {
+        "nome": "Maquiagem dia-dia",
+        "preco": 20.99,
+        "descricao": "Maquiagem do dia a dia 4 cores",
+        "src": "/src/maquiagem02.png"
+    },
+    {
+        "nome": "Makeup tom de pele",
+        "preco": 25.90,
+        "descricao": "Maquiagem que protege a pele",
+        "src": "/src/maquiagem03.png"
+    },
+    {
+        "nome": "Box maquiagens premium",
+        "preco": 229.90,
+        "descricao": "Maquiagens e cuidados para o ano todo",
+        "src": "/src/maquiagem04.png"
+    },
+    {
+        "nome": "Kit maquiagens DayLight",
+        "preco": 125.90,
+        "descricao": "Kit especial de maquiagens DayLight",
+        "src": "/src/maquiagem05.png"
+    },
+    {
+        "nome": "Kit para presente",
+        "preco": 99.90,
+        "descricao": "Kit especial para presentes",
+        "src": "/src/maquiagem06.png"
+    },
+    {
+        "nome": "Kit premium simples",
+        "preco": 159.90,
+        "descricao": "Produtos premium de qualidade",
+        "src": "/src/maquiagem07.png"
+    },
+    {
+        "nome": "Box Makeup presente",
+        "preco": 241.90,
+        "descricao": "Box especial para presentear",
+        "src": "/src/maquiagem05.png"
+    },
+    {
+        "nome": "Combo 4You",
+        "preco": 29.90,
+        "descricao": "4 opções de maquiagem",
+        "src": "/src/maquiagem02.png"
+    },
+    {
+        "nome": "Maquiagem infantil",
+        "preco": 15.90,
+        "descricao": "Maquiagem simples infantil",
+        "src": "/src/maquiagem01.png"
+    },
+    {
+        "nome": "Pó especial para o rosto",
+        "preco": 49.90,
+        "descricao": "Deixa seu rosto belo e limpo",
+        "src": "/src/maquiagem03.png"
+    },
+    {
+        "nome": "Kit +Voce",
+        "preco": 85.90,
+        "descricao": "Maquiagem +Voce Kit",
+        "src": "/src/maquiagem06.png"
+    }
+]

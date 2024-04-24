@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estética HTML</title>
+    <script src="/script.js" type="module" defer></script>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/scripts/script-pesquisa.js" type="module" defer></script>
+    <script src="/scripts/script-renderizar.js" type="module" defer></script>
+    <script src="/scripts/script-maquiagem.js" type="module" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="header__logo">
+            <img src="/src/logo.png" alt="logo">
+            <h1 class="header__titulo">Mat & Mat Cosméticos</h1>
+        </div>
+    </header>
+    <div>
+        <nav class="menu">
+            <ul class="menu__lista">
+                <li class="menu__lista__item"><a class="menu__lista__item__link" href="/index.html">Início</a></li>
+                <li class="menu__lista__item"><a class="menu__lista__item__link" href="/views/cabelo.html">Cabelo</a>
+                </li>
+                <li class="menu__lista__item"><a class="menu__lista__item__link"
+                        href="/views/estetica.html">Estética</a>
+                </li>
+                <li class="menu__lista__item"><a class="menu__lista__item__link" href="/views/higiene.html">Higiene</a>
+                </li>
+                <li class="menu__lista__item"><a class="menu__lista__item__link"
+                        href="/views/manicure.html">Manicure</a>
+                </li>
+                <li class="menu__lista__item"><a class="menu__lista__item__link"
+                        href="/views/maquiagem.html">Maquiagem</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="div__principal">
+        <div class="barra-superior">
+            <div class="ordenacao">
+                <span>Ordenar</span>
+                <select class="selectOrdenacao" id="selectOrdenacao">
+                    <option value="" selected disabled hidden></option>
+                    <option value="menor-preco">Menor preço</option>
+                    <option value="maior-preco">Maior preço</option>
+                    <option value="a-z">A - Z</option>
+                    <option value="z-a">Z - A</option>
+                </select>
+            </div>
+            <div class="busca">
+                <input type="text" id="inputBusca" placeholder="Buscar">
+                <button class="botaoBusca" id="botaoBusca"><img src="/src/lupa.png" alt="icone de pesquisa"></button>
+            </div>
+        </div>
+
+        <div class="div__principal__produtos">
+            <section class="galeria">
+        </div>
+        </section>
+    </div>
+    </div>
+    <footer>
+        <div class="footer__content">
+            <div class="footer__credit">
+                Feito por Matheus Poss
+            </div>
+            <div class="footer__social">
+                <span class="footer__social__iten">
+                    <a target="_blank" href="https://www.linkedin.com/in/matheus-poss-4b09b4234/"> <img
+                            src="/src/linkedin.png" alt="imagem Linkedin"></a>
+                    <a target="_blank" href="https://github.com/Matposs"><img src="/src/github.png"
+                            alt="imagem GitHub"></a>
+                    <a target="_blank" href="https://matposs.github.io/PortfolioPessoal/"><img src="/src/foto.png"
+                            alt="imagem Pessoal"></a>
+                </span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
