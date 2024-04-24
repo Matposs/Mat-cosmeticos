@@ -390,6 +390,10 @@ input[type="text"] {
         flex-direction: row;
     }
 
+    input[type="text"] {
+        margin-top: 10px;
+    }
+
     footer {
         bottom: 0;
         left: 0;
