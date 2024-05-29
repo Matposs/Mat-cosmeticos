@@ -915,9 +915,17 @@ input[type="text"] {
         margin-left: 1vh;
     }
 
+    .carrinho__item__infos__produto div {
+        flex: 0;
+    }
+
+    .carrinho__cheio__comprar #aplicar-cupom {
+        margin-left: 0;
+    }
+
     .carrinho__item__info__nome h3,
     .carrinho__item__info__nome p {
-        width: 15vh;
+        width: 100%;
     }
 
     .carrinho__item__info__quantidade {
@@ -931,11 +939,11 @@ input[type="text"] {
     }
 
     .carrinho__item__infos__produto {
-        width: 50vh;
+        width: 100%;
     }
 
     .carrinho__item__infos__produto__quantidade {
-        padding-left: 22vh;
+        padding-left: 20vh;
     }
 
     .carrinho__item__infos__produto__preco {
