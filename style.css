@@ -739,8 +739,10 @@ input[type="text"] {
     cursor: pointer;
     padding: 10px;
     z-index: 10;
-    position: absolute; /* Adiciona para posicionamento fixo */
-    top: 50%; /* Centraliza verticalmente */
+    position: absolute;
+    /* Adiciona para posicionamento fixo */
+    top: 50%;
+    /* Centraliza verticalmente */
     transform: translateY(-50%);
 }
 
@@ -900,6 +902,11 @@ input[type="text"] {
     .carrinho__item__info__img {
         margin: 0;
         margin-bottom: 10px;
+    }
+
+    .carrinho__item__info img {
+        max-width: 13vh;
+        max-height: 13vh;
     }
 
     .carrinho__item__info__nome {
