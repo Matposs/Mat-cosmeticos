@@ -1,6 +1,6 @@
 [
     {
-        "nome": "Creme de cabelo feminino",
+        "nome": "Creme para cabelos loiros",
         "preco": 85.90,
         "descricao": "Creme para cabelos lisos",
         "src": "/src/cabeloFem01.png"
@@ -18,7 +18,7 @@
         "src": "/src/cabeloFem02.png"
     },
     {
-        "nome": "Creme de cabelo feminino",
+        "nome": "Creme enroladinhos",
         "preco": 59.90,
         "descricao": "Creme para cabelos enrolados",
         "src": "/src/cabeloFem03.png"
@@ -30,13 +30,13 @@
         "src": "/src/cabeloFem04.png"
     },
     {
-        "nome": "Creme de cabelo feminino",
+        "nome": "Máscara de hidratação",
         "preco": 99.90,
         "descricao": "Creme para cabelos encaracolados",
         "src": "/src/cabeloFem05.png"
     },
     {
-        "nome": "Creme de cabelo feminino",
+        "nome": "Kit desmaia cabelo",
         "preco": 109.90,
         "descricao": "Creme para os dias de cabelo ruim",
         "src": "/src/cabeloFem06.png"
@@ -48,7 +48,7 @@
         "src": "/src/cabeloFem07.png"
     },
     {
-        "nome": "Creme de cabelo feminino",
+        "nome": "Creme para pentear",
         "preco": 119.90,
         "descricao": "Creme para os dias de frio",
         "src": "/src/cabeloFem06.png"

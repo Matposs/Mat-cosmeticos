@@ -34,7 +34,7 @@ async function criarCarouselProdutos() {
         button.addEventListener('click', () => {
             const produto = produtos[index];
             openModal(`
-                <h2 class="modal_texto" >Produto adicionado no seu carrinho!</h2> 
+                <h2 class="modal_texto" >Produto adicionado ao carrinho!</h2> 
                 <div class="modal__div__principal">
                     <div class="modal__img">
                         <img src="${produto.src}" alt="imagem do produto">
