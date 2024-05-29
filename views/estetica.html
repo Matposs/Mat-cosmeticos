@@ -17,6 +17,13 @@
         <div class="header__logo">
             <img src="/src/logo.png" alt="logo">
             <h1 class="header__titulo">Mat & Mat Cosméticos</h1>
+            <div class="header__icones">
+                <button id="menu-toggle" class="menu-toggle">
+                    <img src="/src/menu.png" alt="Menu">
+                </button>
+                <button onclick="window.location.href = '/views/favoritos.html';" ><img src="/src/favorites.png" alt="Imagem dos favoritos"></button>
+                <button onclick="window.location.href = '/views/carrinho.html';" ><img src="/src/carrinho__compras.png" alt="Imagem do carrinho de compras"></button>
+            </div>
         </div>
     </header>
     <div>
@@ -62,6 +69,14 @@
         </section>
     </div>
     </div>
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <span class="modal-close" id="modalClose">&times;</span>
+            </div>
+            <div class="modal-content" id="modalContent"></div>
+        </div>
+    </div>
     <footer>
         <div class="footer__content">
             <div class="footer__credit">
@@ -80,4 +95,5 @@
         </div>
     </footer>
 </body>
+
 </html>

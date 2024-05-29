@@ -4,12 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manicure</title>
-    <script src="/script.js" type="module" defer></script>
+    <title>Carrinho</title>
     <link rel="stylesheet" href="/style.css">
-    <script src="/scripts/script-pesquisa.js" type="module" defer></script>
-    <script src="/scripts/script-renderizar.js" type="module" defer></script>
-    <script src="/scripts/script-manicure.js" type="module" defer></script>
+    <script type="module" src="/script.js" defer></script>
+    <script type="module" src="/scripts/script-carrinho.js" defer></script>
 </head>
 
 <body>
@@ -21,8 +19,10 @@
                 <button id="menu-toggle" class="menu-toggle">
                     <img src="/src/menu.png" alt="Menu">
                 </button>
-                <button onclick="window.location.href = '/views/favoritos.html';" ><img src="/src/favorites.png" alt="Imagem dos favoritos"></button>
-                <button onclick="window.location.href = '/views/carrinho.html';" ><img src="/src/carrinho__compras.png" alt="Imagem do carrinho de compras"></button>
+                <button onclick="window.location.href = '/views/favoritos.html';"><img src="/src/favorites.png"
+                        alt="Imagem dos favoritos"></button>
+                <button onclick="window.location.href = '/views/carrinho.html';"><img src="/src/carrinho__compras.png"
+                        alt="Imagem do carrinho de compras"></button>
             </div>
         </div>
     </header>
@@ -45,29 +45,60 @@
             </ul>
         </nav>
     </div>
-    <div class="div__principal">
-        <div class="barra-superior">
-            <div class="ordenacao">
-                <span>Ordenar</span>
-                <select class="selectOrdenacao" id="selectOrdenacao">
-                    <option value="" selected disabled hidden></option>
-                    <option value="menor-preco">Menor preço</option>
-                    <option value="maior-preco">Maior preço</option>
-                    <option value="a-z">A - Z</option>
-                    <option value="z-a">Z - A</option>
-                </select>
-            </div>
-            <div class="busca">
-                <input type="text" id="inputBusca" placeholder="Buscar">
-                <button class="botaoBusca" id="botaoBusca"><img src="/src/lupa.png" alt="icone de pesquisa"></button>
+    <div class="carrinho__div__principal">
+        <div class="carrinho__vazio">
+            <div class="sacola__vazia">
+                <div class="sacola__vazia__img">
+                    <img src="/src/sacolaVazia.png" alt="Sacola vazia">
+                </div>
+                <div class="sacola__vazia__infos">
+                    <h2>Sua sacola está vazia</h2>
+                    <p>Você ainda não adicionou nenhum produto à sacola :(</p>
+                    <a href="/index.html">Continuar comprando ></a>
+                </div>
             </div>
         </div>
+        <div class="carrinho__cheio">
+            <div class="carrinho__cheio__h2">
+                <h2></h2>
+            </div>
+            <div class="carrinho__item__infos">
+                <div class="carrinho__item__infos__produto">
+                    <div class="carrinho__item__infos__produto__nome">
+                        <h3>Produto</h3>
+                    </div>
+                    <div class="carrinho__item__infos__produto__quantidade">
+                        <h3>Quantidade</h3>
+                    </div>
+                    <div class="carrinho__item__infos__produto__preco">
+                        <h3>Preco</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="carrinho__cheio__itens">
+            </div>
+            <div class="carrinho__cheio__comprar">
+            </div>
 
-        <div class="div__principal__produtos">
-            <section class="galeria">
+
         </div>
-        </section>
-    </div>
+        <h2 class="carrossel__conteudo__texto">Aproveite e adicione à sua sacola</h2>
+        <div class="carrossel">
+            <button class="carrossel__nav carrossel__nav--left">&lt;</button>
+
+            <div class="carrossel__conteudo">
+
+            </div>
+            <button class="carrossel__nav carrossel__nav--right">&gt;</button>
+        </div>
+        <div class="formas__pagamento">
+            <h3>Meios de pagamento</h3>
+            <div class="formas__pagamento__imagens">
+                <img src="/src/meioPagamento01.png" alt="Pagamento 1">
+                <img src="/src/meioPagamento02.png" alt="Pagamento 2">
+                <img src="/src/meioPagamento03.png" alt="Pagamento 3">
+            </div>
+        </div>
     </div>
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal">

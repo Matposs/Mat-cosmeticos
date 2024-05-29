@@ -3,39 +3,9 @@ const bannerItemWidth = window.innerWidth;
 let currentIndex = 0;
 let autoSlideInterval = setInterval(proximoSlide, 5000);
 
-const produtos = [
-    {
-        nome: "Shampoo masculino",
-        descricao: "Shampoo para cabelos castanhos",
-        preco: "R$ 35,90",
-        imagem: "./src/cabeloMasc01.png"
-    },
-    {
-        nome: "Batom vermelho",
-        descricao: "Batom vermelho para festas",
-        preco: "R$ 39,90",
-        imagem: "./src/batom01.png"
-    },
-    {
-        nome: "Creme de rosto",
-        descricao: "Creme noturno para o rosto",
-        preco: "R$ 22,90",
-        imagem: "./src/creme01.png"
-    },
-    {
-        nome: "Shampoo anticaspa",
-        descricao: "Shampoo para tratamento da caspa",
-        preco: "R$ 31,50",
-        imagem: "./src/produto01.png"
-    },
-];
-const produtoEmDestaque = {
-    nome: "Batom Vermelho",
-    descricao: "Batom vermelho para festas",
-    preco: "R$ 39,90",
-    imagem: "./src/batom01.png"
-}
-
+document.getElementById('menu-toggle').addEventListener('click', function () {
+    document.querySelector('.menu').classList.toggle('active');
+});
 
 function atualizarPosicaoSlide() {
     bannerItems.style.transform = `translateX(-${currentIndex * bannerItemWidth}px)`;
@@ -77,28 +47,68 @@ document.querySelectorAll('.produto__destaque__item').forEach(item => {
         destaqueImg.src = newSrc;
     });
 });
-function carregarProdutos() {
+
+async function carregarJson(caminho) {
+    const response = await fetch(caminho);
+    const data = await response.json();
+    return data
+}
+async function carregarProdutos() {
+    const produtos = await carregarJson('/produtos/produtos.json');
+    const produtosAleatorios = produtos.sort(() => 0.5 - Math.random()).slice(0, 4);
+    const produtoEmDestaque = selecionarItemAleatorio(produtos);
+
     const produtoPrincipal = document.querySelector('.div__pai__body__produto__principal');
     const listaDestaque = document.querySelector('.destaque__lista');
 
     produtoPrincipal.innerHTML = `
-    <h1 class="h1__esquerda">Nosso queridinho do mês!</h1>
-                <div class="produto__imagem">
-                    <img src="${produtoEmDestaque.imagem}" alt="${produtoEmDestaque.nome}">
-                    <div class="produto__nome">${produtoEmDestaque.nome}</div>
-                </div>
-                <div class="produto__detalhes">
-                    <p>${produtoEmDestaque.descricao}</p>
-                    <span>${produtoEmDestaque.preco}</span>
-                    <button>Comprar</button>
-                </div>
-            `;
-    produtos.forEach((produto, index) => {
+        <h1 class="h1__esquerda">Nosso queridinho do mês!</h1>
+        <div class="produto__imagem">
+            <img src="${produtoEmDestaque.src}" alt="${produtoEmDestaque.nome}">
+            <div class="produto__nome">${produtoEmDestaque.nome}</div>
+        </div>
+        <div class="produto__detalhes">
+            <p>${produtoEmDestaque.descricao}</p>
+            <span>R$${formatarPreco(produtoEmDestaque.preco)}</span>
+            <button class="botao__informacoes">Comprar</button>
+        </div>
+    `;
+    produtoPrincipal.querySelector('.botao__informacoes').addEventListener('click', () => {
+        openModal(`
+        <h2 class="modal_texto" >Produto adicionado no seu carrinho!</h2> <div class="modal__div__principal">
+        <div class="modal__img"><img src="${produtoEmDestaque.src}" alt="imagem do produto">
+            <div class="modal__nome"> <h3>${produtoEmDestaque.nome}</h3>
+            <h4>${produtoEmDestaque.descricao}</h4>
+            </div>
+            </div>
+            <div class="modal__preco">
+                <h3>Preço: R$${formatarPreco(produtoEmDestaque.preco)}</h3> 
+            </div>
+            <div class="modal__botoes">
+            <button id="modal__botoes__return">Continuar Comprando</button>
+            <button id="modal__botoes__sacola">Ir para a sacola ></button>
+            </div>
+        </div>
+        `);
+        adicionarProdutoAoCarrinho(produtoEmDestaque);
+        const botaoReturn = document.getElementById('modal__botoes__return');
+        botaoReturn.addEventListener('click', () => {
+            closeModal();
+        })
+        const botaoSacola = document.getElementById('modal__botoes__sacola');
+        botaoSacola.addEventListener('click', () => {
+            window.location.href = 'views/carrinho.html';
+        })
+    });
+
+    listaDestaque.innerHTML = '';
+
+    produtosAleatorios.forEach((produto, index) => {
         atualizarDestaque(produtos[0]);
         const item = document.createElement('div');
         item.className = 'produto__destaque__item';
         item.innerHTML = `
-            <img src="${produto.imagem}" alt="${produto.nome}">
+            <img src="${produto.src}" alt="${produto.nome}">
             <div>${produto.nome}</div>
         `;
         item.addEventListener('click', () => atualizarDestaque(produto));
@@ -108,18 +118,82 @@ function carregarProdutos() {
 
 function atualizarDestaque(produto) {
     const destaquePrincipal = document.querySelector('.div__pai__body__destaque .destaque__principal');
-    const destaqueComprar = document.querySelector('.div__pai__body__destaque');
     destaquePrincipal.innerHTML = `
-        <img src="${produto.imagem}" alt="${produto.nome}">
+        <img src="${produto.src}" alt="${produto.nome}">
         <div class="destaque__nome">${produto.nome}</div>
         <div class="produto__detalhes">
-        <p>${produto.descricao}</p>
-        <span>${produto.preco}</span>
-        <button>Comprar</button>
-    </div>
+            <p>${produto.descricao}</p>
+            <span>R$ ${formatarPreco(produto.preco)}</span>
+            <button id="destaque__comprar">Comprar</button>
+        </div>
     `;
+    const destaqueComprar = document.getElementById('destaque__comprar');
+    destaqueComprar.addEventListener('click', () => {
+        openModal(`
+        <h2 class="modal_texto" >Produto adicionado no seu carrinho!</h2> <div class="modal__div__principal">
+        <div class="modal__img"><img src="${produto.src}" alt="imagem do produto">
+            <div class="modal__nome"> <h3>${produto.nome}</h3>
+            <h4>${produto.descricao}</h4>
+            </div>
+            </div>
+            <div class="modal__preco">
+                <h3>Preço: R$${formatarPreco(produto.preco)}</h3> 
+            </div>
+            <div class="modal__botoes">
+            <button id="modal__botoes__return">Continuar Comprando</button>
+            <button id="modal__botoes__sacola">Ir para a sacola ></button>
+            </div>
+        </div>
+        `);
+        adicionarProdutoAoCarrinho(produto);
+        const botaoReturn = document.getElementById('modal__botoes__return');
+        botaoReturn.addEventListener('click', () => {
+            closeModal();
+        })
+        const botaoSacola = document.getElementById('modal__botoes__sacola');
+        botaoSacola.addEventListener('click', () => {
+            window.location.href = 'views/carrinho.html';
+        })
+    });
+}
+function selecionarItemAleatorio(lista) {
+    const indiceAleatorio = Math.floor(Math.random() * lista.length);
+    return lista[indiceAleatorio];
+}
+function formatarPreco(preco) {
+    return parseFloat(preco).toFixed(2);
 }
 document.addEventListener('DOMContentLoaded', carregarProdutos);
+const modalOverlay = document.getElementById('modalOverlay');
+const modalClose = document.getElementById('modalClose');
+const modalContent = document.getElementById('modalContent');
 
+function openModal(content) {
+    modalContent.innerHTML = content;
+    modalOverlay.style.display = 'block';
+}
 
+function closeModal() {
+    modalOverlay.style.display = 'none';
+}
 
+modalClose.addEventListener('click', closeModal);
+modalOverlay.addEventListener('click', (event) => {
+    if (event.target === modalOverlay) {
+        closeModal();
+    }
+});
+
+//Estou tendo que reutilizar varias funcoes no ctrl + c ctrl +v
+// O import de funcoes esta quebrando minhas telas no local
+function adicionarProdutoAoCarrinho(produto) {
+    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    const index = carrinho.findIndex(item => item.nome === produto.nome);
+    if (index !== -1) {
+        carrinho[index].quantidade++;
+    } else {
+        carrinho.push({ ...produto, quantidade: 1 });
+    }
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    const carrinhoItens = document.querySelector('.carrinho__cheio__itens');
+}

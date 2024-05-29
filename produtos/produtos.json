@@ -1,0 +1,362 @@
+[
+    {
+        "nome": "Maquiagem simples",
+        "preco": 10.90,
+        "descricao": "Maquiagem simples 2 cores",
+        "src": "/src/maquiagem01.png"
+    },
+    {
+        "nome": "Maquiagem dia-dia",
+        "preco": 20.99,
+        "descricao": "Maquiagem do dia a dia 4 cores",
+        "src": "/src/maquiagem02.png"
+    },
+    {
+        "nome": "Makeup tom de pele",
+        "preco": 25.90,
+        "descricao": "Maquiagem que protege a pele",
+        "src": "/src/maquiagem03.png"
+    },
+    {
+        "nome": "Box maquiagens premium",
+        "preco": 229.90,
+        "descricao": "Maquiagens e cuidados para o ano todo",
+        "src": "/src/maquiagem04.png"
+    },
+    {
+        "nome": "Kit maquiagens DayLight",
+        "preco": 125.90,
+        "descricao": "Kit especial de maquiagens DayLight",
+        "src": "/src/maquiagem05.png"
+    },
+    {
+        "nome": "Kit para presente",
+        "preco": 99.90,
+        "descricao": "Kit especial para presentes",
+        "src": "/src/maquiagem06.png"
+    },
+    {
+        "nome": "Kit premium simples",
+        "preco": 159.90,
+        "descricao": "Produtos premium de qualidade",
+        "src": "/src/maquiagem07.png"
+    },
+    {
+        "nome": "Box Makeup presente",
+        "preco": 241.90,
+        "descricao": "Box especial para presentear",
+        "src": "/src/maquiagem05.png"
+    },
+    {
+        "nome": "Combo 4You",
+        "preco": 29.90,
+        "descricao": "4 opções de maquiagem",
+        "src": "/src/maquiagem02.png"
+    },
+    {
+        "nome": "Maquiagem infantil",
+        "preco": 15.90,
+        "descricao": "Maquiagem simples infantil",
+        "src": "/src/maquiagem01.png"
+    },
+    {
+        "nome": "Pó especial para o rosto",
+        "preco": 49.90,
+        "descricao": "Deixa seu rosto belo e limpo",
+        "src": "/src/maquiagem03.png"
+    },
+    {
+        "nome": "Kit +Voce",
+        "preco": 85.90,
+        "descricao": "Maquiagem +Voce Kit",
+        "src": "/src/maquiagem06.png"
+    },
+    {
+        "nome": "Kit box esmaltes",
+        "preco": 100.90,
+        "descricao": "Kit-box Esmaltes promocional",
+        "src": "/src/manicure06.png"
+    },
+    {
+        "nome": "Esmalte Bright",
+        "preco": 10.99,
+        "descricao": "Esmalte simples mas duradouro",
+        "src": "/src/manicure01.png"
+    },
+    {
+        "nome": "Esmalte especial Long-live",
+        "preco": 25.90,
+        "descricao": "Esmalte Long-live maior duração",
+        "src": "/src/manicure02.png"
+    },
+    {
+        "nome": "Removedor de esmalte",
+        "preco": 9.90,
+        "descricao": "Limpa o esmalte recente",
+        "src": "/src/manicure03.png"
+    },
+    {
+        "nome": "Removedor de esmalte Long-live",
+        "preco": 25.90,
+        "descricao": "Não deixa sobras nas unhas",
+        "src": "/src/manicure04.png"
+    },
+    {
+        "nome": "Esmalte brilhante",
+        "preco": 15.90,
+        "descricao": "Esmalte com brilhos duradouros",
+        "src": "/src/manicure01.png"
+    },
+    {
+        "nome": "Esmalte Crystal",
+        "preco": 39.90,
+        "descricao": "Esmalte especial para festas",
+        "src": "/src/manicure02.png"
+    },
+    {
+        "nome": "Esmalte especial para presente",
+        "preco": 41.90,
+        "descricao": "Perfeição e cuidado",
+        "src": "/src/manicure07.png"
+    },
+    {
+        "nome": "Removedor com acetona",
+        "preco": 29.90,
+        "descricao": "Removedor com acetona sem cheiro",
+        "src": "/src/manicure04.png"
+    },
+    {
+        "nome": "Kit Esmaltes todo-dia",
+        "preco": 119.90,
+        "descricao": "Kit para durar o ano todo",
+        "src": "/src/manicure06.png"
+    },
+    {
+        "nome": "Esmalte natural-one",
+        "preco": 19.90,
+        "descricao": "Esmalte que respeita a natureza",
+        "src": "/src/manicure02.png"
+    },
+    {
+        "nome": "Esmalte dia-dia",
+        "preco": 9.90,
+        "descricao": "Esmalte para uso diário",
+        "src": "/src/manicure07.png"
+    },
+    {
+        "nome": "Sabonete simples",
+        "preco": 15.90,
+        "descricao": "Sabonete diário",
+        "src": "/src/higiene01.png"
+    },
+    {
+        "nome": "Sabonete flores",
+        "preco": 20.99,
+        "descricao": "Sabonete feito com carinho para você",
+        "src": "/src/higiene02.png"
+    },
+    {
+        "nome": "Sabonete de frutas",
+        "preco": 25.90,
+        "descricao": "Sabonete de frutas natural",
+        "src": "/src/higiene03.png"
+    },
+    {
+        "nome": "Pasta dental Unipastas",
+        "preco": 59.90,
+        "descricao": "Pasta dental especial",
+        "src": "/src/higiene04.png"
+    },
+    {
+        "nome": "Kit pasta e escova",
+        "preco": 25.90,
+        "descricao": "Promo no Kit com pasta e escova",
+        "src": "/src/higiene05.png"
+    },
+    {
+        "nome": "Desodorante corporal",
+        "preco": 39.90,
+        "descricao": "Desodorante corporal 48h",
+        "src": "/src/higiene06.png"
+    },
+    {
+        "nome": "Desodorante feminino",
+        "preco": 39.90,
+        "descricao": "Desodorante potente 72h",
+        "src": "/src/higiene07.png"
+    },
+    {
+        "nome": "Sabão natural de coco",
+        "preco": 21.90,
+        "descricao": "Limpeza e cuidado com a natureza",
+        "src": "/src/higiene01.png"
+    },
+    {
+        "nome": "Desodorante corporal noturno",
+        "preco": 29.90,
+        "descricao": "Desodorante pós-banho",
+        "src": "/src/higiene07.png"
+    },
+    {
+        "nome": "Escova de dente Blym",
+        "preco": 19.90,
+        "descricao": "Escova de dente Blym com pasta de brinde",
+        "src": "/src/higiene05.png"
+    },
+    {
+        "nome": "Sabonete de banho",
+        "preco": 19.90,
+        "descricao": "Sabonete de banho cuidado pessoal",
+        "src": "/src/higiene02.png"
+    },
+    {
+        "nome": "Sabonete Dreamy",
+        "preco": 29.90,
+        "descricao": "Sabonete para banhos",
+        "src": "/src/higiene03.png"
+    },
+    {
+        "nome": "Kit skin-care",
+        "preco": 185.90,
+        "descricao": "Creme renovador de uso diário",
+        "src": "/src/estetica01.png"
+    },
+    {
+        "nome": "Kit cuidados skin-care",
+        "preco": 290.99,
+        "descricao": "Recupera o aspecto jovem da pele",
+        "src": "/src/estetica02.png"
+    },
+    {
+        "nome": "Creme facial",
+        "preco": 99.90,
+        "descricao": "Creme facial para antes de dormir",
+        "src": "/src/estetica03.png"
+    },
+    {
+        "nome": "Veneno de cobra",
+        "preco": 199.90,
+        "descricao": "Elimina as rugas e marcas de expressão",
+        "src": "/src/estetica04.png"
+    },
+    {
+        "nome": "Kit Limpa e Protege",
+        "preco": 185.90,
+        "descricao": "Kit especial com produtos naturais",
+        "src": "/src/estetica05.png"
+    },
+    {
+        "nome": "Creme de limão",
+        "preco": 99.90,
+        "descricao": "Creme especial de limão com brindes",
+        "src": "/src/estetica06.png"
+    },
+    {
+        "nome": "Protetor solar",
+        "preco": 109.90,
+        "descricao": "Protetor solar refinado",
+        "src": "/src/estetica04.png"
+    },
+    {
+        "nome": "Creme estético",
+        "preco": 99.90,
+        "descricao": "Creme estético clean",
+        "src": "/src/estetica02.png"
+    },
+    {
+        "nome": "Skin-care natural-one",
+        "preco": 119.90,
+        "descricao": "Pague o creme e leve o kit natural-one",
+        "src": "/src/estetica02.png"
+    },
+    {
+        "nome": "Kit especyal",
+        "preco": 199.90,
+        "descricao": "Kit especyal francês",
+        "src": "/src/estetica01.png"
+    },
+    {
+        "nome": "Kit masculino diário",
+        "preco": 189.90,
+        "descricao": "Kit cuidado com o homem",
+        "src": "/src/estetica05.png"
+    },
+    {
+        "nome": "Creme de mão",
+        "preco": 29.90,
+        "descricao": "Creme de uso diários",
+        "src": "/src/estetica03.png"
+    },
+    {
+        "nome": "Creme de cabelo feminino",
+        "preco": 85.90,
+        "descricao": "Creme para cabelos lisos",
+        "src": "/src/cabeloFem01.png"
+    },
+    {
+        "nome": "Shampoo masculino anticaspa",
+        "preco": 90.99,
+        "descricao": "Shampoo para tratamento de caspa",
+        "src": "/src/cabeloMasc01.png"
+    },
+    {
+        "nome": "Kit de cabelo feminino",
+        "preco": 150.90,
+        "descricao": "Kit para cabelos delicados",
+        "src": "/src/cabeloFem02.png"
+    },
+    {
+        "nome": "Creme de cabelo feminino",
+        "preco": 59.90,
+        "descricao": "Creme para cabelos enrolados",
+        "src": "/src/cabeloFem03.png"
+    },
+    {
+        "nome": "Creme de cabelo feminino",
+        "preco": 85.90,
+        "descricao": "Creme para cabelos rebeldes",
+        "src": "/src/cabeloFem04.png"
+    },
+    {
+        "nome": "Creme de cabelo feminino",
+        "preco": 99.90,
+        "descricao": "Creme para cabelos encaracolados",
+        "src": "/src/cabeloFem05.png"
+    },
+    {
+        "nome": "Creme de cabelo feminino",
+        "preco": 109.90,
+        "descricao": "Creme para os dias de cabelo ruim",
+        "src": "/src/cabeloFem06.png"
+    },
+    {
+        "nome": "Condicionador feminino",
+        "preco": 159.90,
+        "descricao": "Condicionador que não danifica",
+        "src": "/src/cabeloFem07.png"
+    },
+    {
+        "nome": "Creme de cabelo feminino",
+        "preco": 119.90,
+        "descricao": "Creme para os dias de frio",
+        "src": "/src/cabeloFem06.png"
+    },
+    {
+        "nome": "Condicionador reparador",
+        "preco": 109.90,
+        "descricao": "Condicionador que tambem nutre",
+        "src": "/src/cabeloFem01.png"
+    },
+    {
+        "nome": "Kit masculino",
+        "preco": 169.90,
+        "descricao": "Kit de cuidado de cabelos masculino",
+        "src": "/src/cabeloMasc01.png"
+    },
+    {
+        "nome": "Shampoo Natural",
+        "preco": 129.90,
+        "descricao": "Shampoo que respeita você e o meio ambiente",
+        "src": "/src/produto01.png"
+    }
+]
