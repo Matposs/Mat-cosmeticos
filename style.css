@@ -141,7 +141,6 @@ header {
 
 .div__pai__body {
     display: flex;
-    border: 2px solid var(--cor__principal);
     margin: 20px;
     padding: 10px;
 }
@@ -157,10 +156,10 @@ header {
 
 .produto__imagem,
 .destaque__principal {
-    flex: 1;
     position: relative;
     overflow: hidden;
     border: solid var(--cor__terciaria);
+    height: 120vh;
 }
 
 .produto__imagem img,
@@ -220,7 +219,8 @@ header {
 
 button {
     background-color: var(--cor__terciaria);
-    color: var(--cor__secundaria);
+    color: white;
+    font-weight: bold;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -544,7 +544,7 @@ input[type="text"] {
 
 .formas__pagamento__imagens img {
     width: 10vh;
-    height: 10vh;
+    height: auto;
 }
 
 /* Estilo carrinho */
@@ -850,19 +850,32 @@ input[type="text"] {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
+    opacity: 0; /* Inicialmente transparente */
+    transition: opacity 0.5s ease;
 }
 
 .modal {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0.8);
     background-color: white;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     width: 40%;
     max-height: 80%;
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.modal-overlay.show {
+    display: block;
+    opacity: 1;
+}
+
+.modal.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
 }
 
 .remover__h3 {
@@ -917,6 +930,16 @@ input[type="text"] {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    /* Estilo telaInicial  */
+
+    .produto__imagem,
+    .destaque__principal {
+        height: 100%;
+    }
+    .destaque__lista {
+        display: block;
     }
 
     /* Estilo carrinho vazio */
@@ -976,9 +999,7 @@ input[type="text"] {
 
     .carrinho__item__info img {
         max-width: 100%;
-        /* Ajusta largura máxima para 100% */
         height: auto;
-        /* Mantém proporção */
     }
 
     .carrinho__item__info__nome {
@@ -1162,7 +1183,10 @@ input[type="text"] {
         margin-top: 10px;
     }
 
-    /* Conteudo footer mobile */
+    /* Estilo fotos meio pagamento */
+
+   
+    /* Estilo footer mobile */
     footer {
         bottom: 0;
         left: 0;

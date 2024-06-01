@@ -171,12 +171,19 @@ const modalContent = document.getElementById('modalContent');
 function openModal(content) {
     modalContent.innerHTML = content;
     modalOverlay.style.display = 'block';
+    setTimeout(() => {
+        modalOverlay.classList.add('show');
+        document.querySelector('.modal').classList.add('show');
+    }, 10);
 }
 
 function closeModal() {
-    modalOverlay.style.display = 'none';
+    modalOverlay.classList.remove('show');
+    document.querySelector('.modal').classList.remove('show');
+    setTimeout(() => {
+        modalOverlay.style.display = 'none';
+    }, 500);
 }
-
 modalClose.addEventListener('click', closeModal);
 modalOverlay.addEventListener('click', (event) => {
     if (event.target === modalOverlay) {
