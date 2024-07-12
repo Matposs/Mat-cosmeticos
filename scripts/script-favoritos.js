@@ -49,7 +49,7 @@ export async function favoritarProduto(produto) {
             },
             body: JSON.stringify(produto)
         };
-        const response = await fetch(`${url}/favoritos/${index ? `${produto._id}` : ''}`, options);
+        const response = await fetch(`${url}/favoritos/${index?`${produto._id}`:''}`, options);
         if (!response.ok) {
             throw new Error('Erro ao atualizar favoritos');
         }
