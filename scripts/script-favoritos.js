@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
         try {
-            const response = await fetch(url, {
+            const response = await fetch(`${url}/favoritos`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -49,7 +49,7 @@ export async function favoritarProduto(produto) {
             },
             body: JSON.stringify(produto)
         };
-        const response = await fetch(`${url}/${index ? `/${produto._id}` : ''}`, options);
+        const response = await fetch(`${url}/favoritos/${index ? `/${produto._id}` : ''}`, options);
         if (!response.ok) {
             throw new Error('Erro ao atualizar favoritos');
         }
@@ -78,7 +78,7 @@ export async function verificarToken(token) {
 export async function isFavoritado(produto) {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`${url}/${produto._id}/isFavoritado`, {
+        const response = await fetch(`${url}/favoritos/${produto._id}/isFavoritado`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
