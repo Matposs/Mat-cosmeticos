@@ -113,7 +113,7 @@ export async function renderizarProdutosFavoritos(listaProdutos, classeHtml) {
         favoritosButton.classList.add('botao__favoritar');
         const favorito = await isFavoritado(produto);
         const src = favorito ? "/src/favorites__filled.png" : "/src/favorites.png";
-        favoritosButton.innerHTML = `< img src = "${src}" alt = "ícone de favoritar" > `;
+        favoritosButton.innerHTML = `<img src = "${src}" alt = "ícone de favoritar" > `;
 
         favoritosButton.addEventListener('click', (event) => {
             event.stopPropagation();
@@ -123,7 +123,7 @@ export async function renderizarProdutosFavoritos(listaProdutos, classeHtml) {
         const informacoes = document.createElement('div');
         informacoes.classList.add('informacoes');
         informacoes.innerHTML = `
-        < h2 > ${produto.produtoId.nome}</ >
+        <h2 > ${produto.produtoId.nome}</ >
             <h3 class="informacoes__descricao">${produto.produtoId.descricao}</h3>
             <p class="informacoes__preco">R$ ${formatarPreco(produto.produtoId.preco)}</p>
             <button class="botao__informacoes">Comprar</button>
@@ -131,7 +131,7 @@ export async function renderizarProdutosFavoritos(listaProdutos, classeHtml) {
 
         informacoes.querySelector('.botao__informacoes').addEventListener('click', () => {
             openModal(`
-            < h2 class= "modal_texto" > Produto adicionado ao carrinho!</ >
+            <h2 class= "modal_texto" > Produto adicionado ao carrinho!</ >
         <div class="modal__div__principal">
             <div class="modal__img"><img src="${produto.produtoId.src}" alt="imagem do produto">
                 <div class="modal__nome"> <h3>${produto.produtoId.nome}</h3>
