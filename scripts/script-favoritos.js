@@ -49,7 +49,7 @@ export async function favoritarProduto(produto) {
             },
             body: JSON.stringify(produto)
         };
-        const response = await fetch(`${url}/favoritos/${index ? `/${produto._id}` : ''}`, options);
+        const response = await fetch(`${url}/favoritos/${index?`/${produto._id}`:''}`, options);
         if (!response.ok) {
             throw new Error('Erro ao atualizar favoritos');
         }
@@ -113,7 +113,7 @@ export async function renderizarProdutosFavoritos(listaProdutos, classeHtml) {
         favoritosButton.classList.add('botao__favoritar');
         const favorito = await isFavoritado(produto);
         const src = favorito ? "/src/favorites__filled.png" : "/src/favorites.png";
-        favoritosButton.innerHTML = `<img src = "${src}" alt = "ícone de favoritar" > `;
+        favoritosButton.innerHTML = `<img src = "${src}" alt = "ícone de favoritar"> `;
 
         favoritosButton.addEventListener('click', (event) => {
             event.stopPropagation();
@@ -131,7 +131,7 @@ export async function renderizarProdutosFavoritos(listaProdutos, classeHtml) {
 
         informacoes.querySelector('.botao__informacoes').addEventListener('click', () => {
             openModal(`
-            <h2 class= "modal_texto" > Produto adicionado ao carrinho!</>
+            <h2 class= "modal_texto"> Produto adicionado ao carrinho!</>
         <div class="modal__div__principal">
             <div class="modal__img"><img src="${produto.produtoId.src}" alt="imagem do produto">
                 <div class="modal__nome"> <h3>${produto.produtoId.nome}</h3>
@@ -143,7 +143,7 @@ export async function renderizarProdutosFavoritos(listaProdutos, classeHtml) {
             </div>
             <div class="modal__botoes">
                 <button id="modal__botoes__return">Continuar Comprando</button>
-                <button id="modal__botoes__sacola">Ir para a sacola ></button>
+                <button id="modal__botoes__sacola">Ir para a sacola></button>
             </div>
         </div>
             `);

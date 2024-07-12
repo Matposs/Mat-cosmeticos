@@ -35,7 +35,7 @@ async function criarCarouselProdutos() {
     cardComprarButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
             openModal(`
-                <h2 class="modal_texto" >Produto adicionado ao carrinho!</h2> 
+                <h2 class="modal_texto">Produto adicionado ao carrinho!</h2> 
                 <div class="modal__div__principal">
                     <div class="modal__img">
                         <img src="${produtos[index].src}" alt="imagem do produto">

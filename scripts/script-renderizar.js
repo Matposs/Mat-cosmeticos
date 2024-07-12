@@ -61,7 +61,7 @@ export async function renderizarProdutos(listaProdutos, classeHtml) {
                     </div>
                     <div class="modal__botoes">
                         <button id="modal__botoes__return">Continuar Comprando</button>
-                        <button id="modal__botoes__sacola">Ir para a sacola ></button>
+                        <button id="modal__botoes__sacola">Ir para a sacola></button>
                     </div>
                 </div>
             `);
