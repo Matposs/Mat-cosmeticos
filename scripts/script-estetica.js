@@ -3,7 +3,7 @@ import { buscarProdutos } from "./script-pesquisa.js";
 import { ordenarProdutos } from "./script-ordenar.js";
 const galeria = document.querySelector('.galeria');
 const botaoBusca = document.querySelector('#botaoBusca');
-const { URL_TESTE, URL_DESENV, URL_PROD } = require('../config/config.js');
+import { URL_TESTE, URL_DESENV, URL_PROD } from '../config/config.js';
 
 let produtosEstetica = [];
 async function carregarProdutos() {

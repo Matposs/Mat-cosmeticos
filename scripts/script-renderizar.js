@@ -1,6 +1,6 @@
 import { favoritarProduto, isFavoritado } from "./script-favoritos.js";
 let favoritos = [];
-const { URL_TESTE, URL_DESENV, URL_PROD } = require('../config/config.js');
+import { URL_TESTE, URL_DESENV, URL_PROD } from '../config/config.js';
 
 export async function renderizarProdutos(listaProdutos, classeHtml) {
     const token = localStorage.getItem('token');

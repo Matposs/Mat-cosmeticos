@@ -1,4 +1,5 @@
 const form = document.getElementById('signupForm');
+import { URL_TESTE, URL_DESENV, URL_PROD } from '../config/config.js';
 form.addEventListener('submit', async function (event) {
     event.preventDefault();
 
@@ -7,7 +8,6 @@ form.addEventListener('submit', async function (event) {
     const email = formData.get('email');
     const senha = formData.get('senha');
     const senhaConfirmar = formData.get('senhaConfirmar');
-    const { URL_TESTE, URL_DESENV, URL_PROD } = require('../config/config.js');
 
     try {
         const response = await fetch(`${URL_PROD}/usuarios/registro`, {

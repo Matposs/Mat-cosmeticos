@@ -3,7 +3,7 @@ const loginContainer = document.getElementById('login-container');
 const welcomeContainer = document.getElementById('welcome-container');
 const welcomeMessage = document.getElementById('welcome-message');
 const logoutButton = document.getElementById('logout-button');
-const { URL_TESTE, URL_DESENV, URL_PROD } = require('../config/config.js');
+import { URL_TESTE, URL_DESENV, URL_PROD } from '../config/config.js';
 
 loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();

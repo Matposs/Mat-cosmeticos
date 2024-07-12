@@ -1,6 +1,6 @@
 let favoritos = [];
+import { URL_TESTE, URL_DESENV, URL_PROD } from '../config/config.js';
 const url = URL_PROD;
-const { URL_TESTE, URL_DESENV, URL_PROD } = require('../config/config.js');
 
 document.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('token');

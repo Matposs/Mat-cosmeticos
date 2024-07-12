@@ -4,7 +4,7 @@ let produtos = [];
 let precoTotal;
 const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 const produtosCarrossel = document.querySelector('.carrossel__conteudo');
-const { URL_TESTE, URL_DESENV, URL_PROD } = require('../config/config.js');
+import { URL_TESTE, URL_DESENV, URL_PROD } from '../config/config.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     if (document.title === "Carrinho") {
