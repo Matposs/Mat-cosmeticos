@@ -78,7 +78,7 @@ export async function verificarToken(token) {
 export async function isFavoritado(produto) {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`${url}/${produto._id} / isFavoritado`, {
+        const response = await fetch(`${url}/${produto._id}/isFavoritado`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -123,7 +123,7 @@ export async function renderizarProdutosFavoritos(listaProdutos, classeHtml) {
         const informacoes = document.createElement('div');
         informacoes.classList.add('informacoes');
         informacoes.innerHTML = `
-        <h2 > ${produto.produtoId.nome}</ >
+        <h2> ${produto.produtoId.nome}</>
             <h3 class="informacoes__descricao">${produto.produtoId.descricao}</h3>
             <p class="informacoes__preco">R$ ${formatarPreco(produto.produtoId.preco)}</p>
             <button class="botao__informacoes">Comprar</button>
@@ -131,7 +131,7 @@ export async function renderizarProdutosFavoritos(listaProdutos, classeHtml) {
 
         informacoes.querySelector('.botao__informacoes').addEventListener('click', () => {
             openModal(`
-            <h2 class= "modal_texto" > Produto adicionado ao carrinho!</ >
+            <h2 class= "modal_texto" > Produto adicionado ao carrinho!</>
         <div class="modal__div__principal">
             <div class="modal__img"><img src="${produto.produtoId.src}" alt="imagem do produto">
                 <div class="modal__nome"> <h3>${produto.produtoId.nome}</h3>
