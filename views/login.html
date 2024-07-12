@@ -4,12 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estética</title>
-    <script src="/script.js" type="module" defer></script>
+    <title>Login</title>
     <link rel="stylesheet" href="/style.css">
-    <script src="/scripts/script-pesquisa.js" type="module" defer></script>
-    <script src="/scripts/script-renderizar.js" type="module" defer></script>
-    <script src="/scripts/script-estetica.js" type="module" defer></script>
+    <script type="module" src="/script.js"></script>
+    <script type="module" src="/scripts/script-login.js"></script>
 </head>
 
 <body>
@@ -50,37 +48,20 @@
             </ul>
         </nav>
     </div>
-    <div class="div__principal">
-        <div class="barra-superior">
-            <div class="ordenacao">
-                <span>Ordenar</span>
-                <select class="selectOrdenacao" id="selectOrdenacao">
-                    <option value="" selected disabled hidden></option>
-                    <option value="menor-preco">Menor preço</option>
-                    <option value="maior-preco">Maior preço</option>
-                    <option value="a-z">A - Z</option>
-                    <option value="z-a">Z - A</option>
-                </select>
-            </div>
-            <div class="busca">
-                <input type="text" id="inputBusca" placeholder="Buscar">
-                <button class="botaoBusca" id="botaoBusca"><img src="/src/lupa.png" alt="icone de pesquisa"></button>
-            </div>
-        </div>
-
-        <div class="div__principal__produtos">
-            <section class="galeria">
-        </div>
-        </section>
+    <div class="container login-container" id="login-container">
+        <h2>Login</h2>
+        <form id="loginForm" class="login-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+        <p>Não tem uma conta? <a href="criar-conta.html">Crie uma agora!</a></p>
     </div>
-    </div>
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal">
-            <div class="modal-header">
-                <span class="modal-close" id="modalClose">&times;</span>
-            </div>
-            <div class="modal-content" id="modalContent"></div>
-        </div>
+    <div class="container" id="welcome-container" style="display: none; min-height: 40vh;">
+        <h2 id="welcome-message"></h2>
+        <button id="logout-button">Logout</button>
     </div>
     <footer>
         <div class="footer__content">

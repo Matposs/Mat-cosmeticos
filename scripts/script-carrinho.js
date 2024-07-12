@@ -4,6 +4,7 @@ let produtos = [];
 let precoTotal;
 const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 const produtosCarrossel = document.querySelector('.carrossel__conteudo');
+const { URL_TESTE, URL_DESENV, URL_PROD } = require('../config/config.js');
 
 document.addEventListener('DOMContentLoaded', () => {
     if (document.title === "Carrinho") {
@@ -24,7 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function criarCarouselProdutos() {
-    produtos = await carregarJson('/produtos/produtos.json');
+    const response = await fetch(`${URL_PROD}/produtos`);
+    const produtos = await response.json();
     produtos.slice(0, 8).forEach(produto => {
         const card = criarProdutoCard(produto);
         produtosCarrossel.appendChild(card);
@@ -32,23 +34,23 @@ async function criarCarouselProdutos() {
     const cardComprarButtons = document.querySelectorAll('.botao-comprar');
     cardComprarButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
-            const produto = produtos[index];
             openModal(`
                 <h2 class="modal_texto" >Produto adicionado ao carrinho!</h2> 
                 <div class="modal__div__principal">
                     <div class="modal__img">
-                        <img src="${produto.src}" alt="imagem do produto">
+                        <img src="${produtos[index].src}" alt="imagem do produto">
                         <div class="modal__nome">
-                            <h3>${produto.nome}</h3>
-                            <h4>${produto.descricao}</h4>
+                            <h3>${produtos[index].nome}</h3>
+                            <h4>${produtos[index].descricao}</h4>
                         </div>
                     </div>
                     <div class="modal__preco">
-                        <h3>Preço: R$${formatarPreco(produto.preco)}</h3> 
+                        <h3>Preço: R$${formatarPreco(produtos[index].preco)}</h3> 
                     </div>
                 </div>
             `);
-            adicionarProdutoAoCarrinho(produto);
+
+            adicionarProdutoAoCarrinho(produtos[index]);
             setTimeout(() => {
                 closeModal();
             }, 3000);
@@ -60,15 +62,24 @@ function criarProdutoCard(produto) {
     const card = document.createElement('div');
     card.classList.add('carrossel__item');
     card.innerHTML = `
-        <img src="${produto.src}" alt="${produto.nome}">
-        <h3>${produto.nome}</h3>
-        <p>${produto.descricao}</p>
-        <span>R$${formatarPreco(produto.preco)}</span>
+        <img src="${produto.src || produto.produtoId.src}" alt="${produto.nome || produto.produtoId.nome}">
+        <h3>${produto.nome || produto.produtoId.nome}</h3>
+        <p>${produto.descricao || produto.produtoId.descricao}</p>
+        <span>R$${formatarPreco(produto.preco || produto.produtoId.preco)}</span>
         <button class="botao-comprar">Comprar</button>
     `;
     return card;
 }
+function atualizarPrecoProduto(produto) {
+    const produtoNome = produto.nome || produto.produtoId.nome;
+    const produtoNomeSanitizado = produtoNome.replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+    const quantidade = produto.quantidade || produto.produtoId.quantidade;
+    const preco = produto.preco || produto.produtoId.preco;
+    const precoProdutoTotal = preco * quantidade;
 
+    const precoElemento = document.querySelector(`#quantidade-${produtoNomeSanitizado}`).closest('.carrinho__item').querySelector('.carrinho__item__info__preco p');
+    precoElemento.innerText = `R$${formatarPreco(precoProdutoTotal)}`;
+}
 async function carregarJson(caminho) {
     const response = await fetch(caminho);
     const data = await response.json();
@@ -131,48 +142,58 @@ function criarCarrinhoCheio() {
     const carrinhoCheio = document.querySelector('.carrinho__cheio');
     const carrinhoItens = document.querySelector('.carrinho__cheio__itens');
     let totalProdutos = 0;
+    let precoTotal = 0;
     carrinhoItens.innerHTML = '';
+
     carrinho.forEach(produto => {
+        const produtoNome = produto.nome || produto.produtoId.nome;
+        const produtoNomeSanitizado = produtoNome.replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+        const quantidade = produto.quantidade || produto.produtoId.quantidade;
+        const preco = produto.preco || produto.produtoId.preco;
+        const precoProdutoTotal = preco * quantidade;
+
         const item = document.createElement('div');
         item.classList.add('carrinho__item');
         item.innerHTML = `
         <div class="carrinho__item__info">
-        <div class="carrinho__item__info__img">
-            <img src="${produto.src}" alt="${produto.nome}">
-        </div>
-        <div class="carrinho__item__info__nome">
-            <h3 id="item__nome">${produto.nome}</h3>
-            <p>${produto.descricao}</p>
-        </div>
-        <div class="carrinho__item__info__quantidade">
-            <label for="quantidade-${produto.nome}"></label>
-            <select id="quantidade-${produto.nome.replace(/\s+/g, '-').replace(/[^\w-]/g, '')}" name="quantidade">
-                ${criarOptionsQuantidade(produto.quantidade)}
-            </select>
-            <div class="carrinho__item__info__quantidade__remover">
-                    <button data-nome="${produto.nome}" class="remover">remover</button>
-             </div>
-        </div>
-        <div class="carrinho__item__info__preco">
-            <p>R$${formatarPreco(produto.preco * produto.quantidade)}</p>
-        </div>
-    </div>
-`;
+            <div class="carrinho__item__info__img">
+                <img src="${produto.src || produto.produtoId.src}" alt="${produtoNome}">
+            </div>
+            <div class="carrinho__item__info__nome">
+                <h3 id="item__nome">${produtoNome}</h3>
+                <p>${produto.descricao || produto.produtoId.descricao}</p>
+            </div>
+            <div class="carrinho__item__info__quantidade">
+                <label for="quantidade-${produtoNomeSanitizado}"></label>
+                <select id="quantidade-${produtoNomeSanitizado}" name="quantidade">
+                    ${criarOptionsQuantidade(quantidade)}
+                </select>
+                <div class="carrinho__item__info__quantidade__remover">
+                    <button data-nome="${produtoNome}" class="remover">remover</button>
+                </div>
+            </div>
+            <div class="carrinho__item__info__preco">
+                <p>R$${formatarPreco(precoProdutoTotal)}</p>
+            </div>
+        </div>`;
+
         carrinhoItens.appendChild(item);
-        totalProdutos += produto.quantidade;
+        totalProdutos += quantidade;
+        precoTotal += precoProdutoTotal;
     });
+
     const carrinhoComprar = document.querySelector('.carrinho__cheio__comprar');
     carrinhoComprar.innerHTML = `
     <div class="preco__total">
         <h2> Preço Total: R$${formatarPreco(precoTotal)}</h2>
     </div>
-        <div class="cupom-desconto">
-            <label for="cupom">Tem cupom de desconto?</label>
-            <input type="text" id="cupom" name="cupom" placeholder="Use o cupom 20OFF">
-            <button id="aplicar-cupom">Aplicar</button>
-        </div>
-        <button id="finalizar-compra">Finalizar Compra</button>
-    `;
+    <div class="cupom-desconto">
+        <label for="cupom">Tem cupom de desconto?</label>
+        <input type="text" id="cupom" name="cupom" placeholder="Use o cupom 20OFF">
+        <button id="aplicar-cupom">Aplicar</button>
+    </div>
+    <button id="finalizar-compra">Finalizar Compra</button>`;
+
     document.getElementById('aplicar-cupom').addEventListener('click', aplicarCupom);
     document.querySelector('.carrinho__cheio__h2').innerText = `Sacola (${totalProdutos} produtos)`;
     vincularEventosQuantidade();
@@ -188,12 +209,18 @@ function criarOptionsQuantidade(quantidade) {
 }
 
 function adicionarProdutoAoCarrinho(produto) {
-    const index = carrinho.findIndex(item => item.nome === produto.nome);
+    const index = carrinho.findIndex(item => {
+        const itemId = item.produtoId ? item.produtoId._id : item._id;
+        const produtoId = produto.produtoId ? produto.produtoId._id : produto._id;
+        return itemId === produtoId;
+    });
+
     if (index !== -1) {
         carrinho[index].quantidade++;
     } else {
         carrinho.push({ ...produto, quantidade: 1 });
     }
+
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
     const carrinhoItens = document.querySelector('.carrinho__cheio__itens');
     carrinhoItens.innerHTML = '';
@@ -201,7 +228,7 @@ function adicionarProdutoAoCarrinho(produto) {
     calcularPrecoTotal();
 }
 function removerProdutoCarrinho(produto) {
-    const index = carrinho.findIndex(item => item.nome === produto.nome);
+    const index = carrinho.findIndex(item => item.nome || item.produtoId.nome === produto.nome || produto.produtoId.nome);
     if (index !== -1) {
         if (confirm("Deseja excluir?")) {
             carrinho.splice(index, 1);
@@ -222,27 +249,36 @@ function removerProdutoCarrinho(produto) {
 function calcularPrecoTotal() {
     precoTotal = 0;
     carrinho.forEach(produto => {
-        precoTotal += produto.preco * produto.quantidade;
+        const quantidade = produto.quantidade || produto.produtoId.quantidade;
+        const preco = produto.preco || produto.produtoId.preco;
+        precoTotal += preco * quantidade;
     });
     document.querySelector('.preco__total h2').innerText = `Preço Total: R$${formatarPreco(precoTotal)}`;
 }
-
 function atualizarQuantidade(event, produtoAtualizado) {
     produtoAtualizado.quantidade = parseInt(event.target.value);
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    atualizarPrecoProduto(produtoAtualizado);
     calcularPrecoTotal();
-    const carrinhoItens = document.querySelector('.carrinho__cheio__itens');
-    carrinhoItens.innerHTML = '';
-    criarCarrinhoCheio();
 }
 
 function vincularEventosQuantidade() {
     carrinho.forEach(produto => {
-        if (!produto || !produto.nome) {
+        let produtoRenomeavel = '';
+        if (!produto) {
+            console.error("Produto inválido ou sem nome:", produto);
+            return;
+        } else if (produto.produtoId) {
+            produtoRenomeavel = produto.produtId.nome.replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+        }
+        else if (produto.nome) {
+            produtoRenomeavel = produto.nome.replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+        }
+        else {
             console.error("Produto inválido ou sem nome:", produto);
             return;
         }
-        const produtoNomeRegex = produto.nome.replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+        const produtoNomeRegex = produtoRenomeavel;
         const selectQuantidade = document.querySelector(`#quantidade-${produtoNomeRegex}`);
         if (selectQuantidade) {
             selectQuantidade.addEventListener('change', (event) => atualizarQuantidade(event, produto));
@@ -254,7 +290,7 @@ function vincularEventosQuantidade() {
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('remover')) {
         const produtoNome = event.target.dataset.nome;
-        const produto = carrinho.find(item => item.nome === produtoNome);
+        const produto = carrinho.find(item => item.nome || item.produtoId.nome === produtoNome);
         removerProdutoCarrinho(produto);
     }
 });

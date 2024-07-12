@@ -54,7 +54,8 @@ async function carregarJson(caminho) {
     return data
 }
 async function carregarProdutos() {
-    const produtos = await carregarJson('/produtos/produtos.json');
+    const response = await fetch('http://localhost:3000/produtos');
+    const produtos = await response.json();
     const produtosAleatorios = produtos.sort(() => 0.5 - Math.random()).slice(0, 4);
     const produtoEmDestaque = selecionarItemAleatorio(produtos);
 

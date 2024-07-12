@@ -3,72 +3,96 @@
         "nome": "Kit box esmaltes",
         "preco": 100.90,
         "descricao": "Kit-box Esmaltes promocional",
+        "quantidade": 100,
+        "categoria": "manicure",
         "src": "/src/manicure06.png"
     },
     {
         "nome": "Esmalte Bright",
         "preco": 10.99,
         "descricao": "Esmalte simples mas duradouro",
+        "quantidade": 100,
+        "categoria": "manicure",
         "src": "/src/manicure01.png"
     },
     {
         "nome": "Esmalte especial Long-live",
         "preco": 25.90,
         "descricao": "Esmalte Long-live maior duração",
+        "quantidade": 100,
+        "categoria": "manicure",
         "src": "/src/manicure02.png"
     },
     {
         "nome": "Removedor de esmalte",
         "preco": 9.90,
         "descricao": "Limpa o esmalte recente",
+        "quantidade": 100,
+        "categoria": "manicure",
         "src": "/src/manicure03.png"
     },
     {
         "nome": "Removedor de esmalte Long-live",
         "preco": 25.90,
         "descricao": "Não deixa sobras nas unhas",
+        "quantidade": 100,
+        "categoria": "manicure",
         "src": "/src/manicure04.png"
     },
     {
         "nome": "Esmalte brilhante",
         "preco": 15.90,
         "descricao": "Esmalte com brilhos duradouros",
+        "quantidade": 100,
+        "categoria": "manicure",
         "src": "/src/manicure01.png"
     },
     {
         "nome": "Esmalte Crystal",
         "preco": 39.90,
         "descricao": "Esmalte especial para festas",
+        "quantidade": 100,
+        "categoria": "manicure",
         "src": "/src/manicure02.png"
     },
     {
         "nome": "Esmalte especial para presente",
         "preco": 41.90,
         "descricao": "Perfeição e cuidado",
+        "quantidade": 100,
+        "categoria": "manicure",
         "src": "/src/manicure07.png"
     },
     {
         "nome": "Removedor com acetona",
         "preco": 29.90,
         "descricao": "Removedor com acetona sem cheiro",
+        "quantidade": 100,
+        "categoria": "manicure",
         "src": "/src/manicure04.png"
     },
     {
         "nome": "Kit Esmaltes todo-dia",
         "preco": 119.90,
         "descricao": "Kit para durar o ano todo",
+        "quantidade": 100,
+        "categoria": "manicure",
         "src": "/src/manicure06.png"
     },
     {
         "nome": "Esmalte natural-one",
         "preco": 19.90,
         "descricao": "Esmalte que respeita a natureza",
+        "quantidade": 100,
+        "categoria": "manicure",
         "src": "/src/manicure02.png"
     },
     {
         "nome": "Esmalte dia-dia",
         "preco": 9.90,
         "descricao": "Esmalte para uso diário",
+        "quantidade": 100,
+        "categoria": "manicure",
         "src": "/src/manicure07.png"
     }
 ]

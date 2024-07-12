@@ -35,6 +35,11 @@ header {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
+.header__icones .user-button-img {
+    width: 50px;
+    height: 50px;
+}
+
 .header__icones img {
     width: 35px;
     height: 35px;
@@ -46,6 +51,8 @@ header {
     margin-top: 1vh;
     color: var(--cor__secundaria);
 }
+
+
 
 .banner__texto {
     position: absolute;
@@ -547,6 +554,106 @@ input[type="text"] {
     height: auto;
 }
 
+/* Estilo criar conta */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-form label {
+    margin-bottom: 8px;
+}
+
+.signup-form input,
+.signup-form button {
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.signup-form button {
+    background-color: var(--cor__terciaria);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.signup-form button:hover {
+    background-color: var(--cor__secundaria);
+}
+
+/* Estilos para o link de login */
+.signup-form p {
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+.signup-form a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.signup-form a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para login */
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form label {
+    margin-bottom: 8px;
+}
+
+.login-form input,
+.login-form button {
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.login-form button {
+    background-color: var(--cor__terciaria);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: var(--cor__secundaria);
+}
+
+/* Estilos para o link de criar conta */
+.login-form p {
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+.login-form a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-form a:hover {
+    text-decoration: underline;
+}
+
 /* Estilo carrinho */
 
 .carrinho__cheio {
@@ -850,7 +957,7 @@ input[type="text"] {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
-    opacity: 0; /* Inicialmente transparente */
+    opacity: 0;
     transition: opacity 0.5s ease;
 }
 
@@ -868,6 +975,7 @@ input[type="text"] {
     opacity: 0;
     transition: transform 0.5s ease, opacity 0.5s ease;
 }
+
 .modal-overlay.show {
     display: block;
     opacity: 1;
@@ -938,6 +1046,7 @@ input[type="text"] {
     .destaque__principal {
         height: 100%;
     }
+
     .destaque__lista {
         display: block;
     }
@@ -1128,9 +1237,14 @@ input[type="text"] {
         height: 50px;
     }
 
+    .header__icones .user-button-img {
+        width: 40px;
+        height: 40px;
+    }
+
     .header__icones img {
-        width: 15px;
-        height: 15px;
+        width: 30px;
+        height: 30px;
     }
 
     .div__pai__body {
@@ -1185,7 +1299,7 @@ input[type="text"] {
 
     /* Estilo fotos meio pagamento */
 
-   
+
     /* Estilo footer mobile */
     footer {
         bottom: 0;
@@ -1207,6 +1321,20 @@ input[type="text"] {
 
     .footer__social a:last-child {
         margin-right: 0;
+    }
+}
+
+/* Estilo criar-usuario mobile */
+@media screen and (max-width: 600px) {
+    .container {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .signup-form input,
+    .signup-form button {
+        padding: 8px;
+        font-size: 14px;
     }
 }
 

@@ -3,17 +3,19 @@ import { buscarProdutos } from "./script-pesquisa.js";
 import { ordenarProdutos } from "./script-ordenar.js";
 const galeria = document.querySelector('.galeria');
 const botaoBusca = document.querySelector('#botaoBusca');
+const { URL_TESTE, URL_DESENV, URL_PROD } = require('../config/config.js');
 
 let produtosEstetica = [];
-fetch('/produtos/estetica.json')
-    .then(response => response.json())
-    .then(data => {
+async function carregarProdutos() {
+    try {
+        const response = await fetch(`${URL_PROD}/produtos/categoria/estetica`);
+        const data = await response.json();
         produtosEstetica = data;
         renderizarProdutos(produtosEstetica, galeria);
-    })
-    .catch(error => {
-        console.log("Erro ao carregar o arquivo .JSON: ", error);
-    });
+    } catch (error) {
+        console.error("Erro ao carregar os produtos de API: ", error);
+    }
+}
 
 document.getElementById('selectOrdenacao').addEventListener('change', (event) => {
     const valorOrdenacao = event.target.value;
@@ -21,10 +23,9 @@ document.getElementById('selectOrdenacao').addEventListener('change', (event) =>
     renderizarProdutos(listaOrdenada, galeria);
 });
 
-
-renderizarProdutos(produtosEstetica, galeria);
-
 botaoBusca.addEventListener('click', () => {
     const termoBusca = inputBusca.value.trim().toLowerCase();
     buscarProdutos(produtosEstetica, galeria, termoBusca);
 });
+
+document.addEventListener('DOMContentLoaded', carregarProdutos);

@@ -1,35 +1,43 @@
-import { favoritarProduto } from "./script-favoritos.js";
-let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+import { favoritarProduto, isFavoritado } from "./script-favoritos.js";
+let favoritos = [];
+const { URL_TESTE, URL_DESENV, URL_PROD } = require('../config/config.js');
 
-function isProdutoFavoritado(produto) {
-    return favoritos.some(item => item.nome === produto.nome);
-}
-
-export function renderizarProdutos(listaProdutos, classeHtml) {
+export async function renderizarProdutos(listaProdutos, classeHtml) {
+    const token = localStorage.getItem('token');
+    if (token) {
+        try {
+            const response = await fetch(`${URL_PROD}/favoritos`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            if (response.ok) {
+                favoritos = await response.json();
+            }
+        } catch (error) {
+            console.error('Erro ao carregar favoritos:', error);
+        }
+    }
     classeHtml.innerHTML = "";
-    listaProdutos.forEach((produto) => {
+    listaProdutos.forEach(async (produto) => {
         const div = document.createElement('div');
         div.classList.add('coluna');
-
         const img = document.createElement('img');
         img.src = produto.src;
-
         const divImg = document.createElement('div');
         divImg.classList.add('coluna__imagem');
-
         const favoritosButton = document.createElement('button');
         favoritosButton.classList.add('botao__favoritar');
+        const favorito = await isFavoritado(produto);
+        const src = favorito ? "/src/favorites__filled.png" : "/src/favorites.png";
+        favoritosButton.innerHTML =
+            `<img src="${src}" alt="ícone de favoritar">`;
+        ;
         favoritosButton.addEventListener('click', (event) => {
-            event.stopPropagation(); // Evitar a propagação do evento
+            event.stopPropagation();
             favoritarProduto(produto);
-            // Atualiza a lista de favoritos e re-renderiza os produtos
-            favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-            renderizarProdutos(listaProdutos, classeHtml);
         });
-        favoritosButton.innerHTML = `
-            <img src="/src/favorites${isProdutoFavoritado(produto) ? '__filled' : ''}.png" alt="ícone de favoritar">
-        `;
-
         const informacoes = document.createElement('div');
         informacoes.classList.add('informacoes');
         informacoes.innerHTML = `
@@ -118,3 +126,4 @@ modalOverlay.addEventListener('click', (event) => {
         closeModal();
     }
 });
+

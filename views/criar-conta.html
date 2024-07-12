@@ -4,12 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estética</title>
-    <script src="/script.js" type="module" defer></script>
+    <title>Criar Conta</title>
     <link rel="stylesheet" href="/style.css">
-    <script src="/scripts/script-pesquisa.js" type="module" defer></script>
-    <script src="/scripts/script-renderizar.js" type="module" defer></script>
-    <script src="/scripts/script-estetica.js" type="module" defer></script>
+    <script type="module" src="/script.js"></script>
+    <script type="module" src="/scripts/script-criar-conta.js"></script>
 </head>
 
 <body>
@@ -50,37 +48,20 @@
             </ul>
         </nav>
     </div>
-    <div class="div__principal">
-        <div class="barra-superior">
-            <div class="ordenacao">
-                <span>Ordenar</span>
-                <select class="selectOrdenacao" id="selectOrdenacao">
-                    <option value="" selected disabled hidden></option>
-                    <option value="menor-preco">Menor preço</option>
-                    <option value="maior-preco">Maior preço</option>
-                    <option value="a-z">A - Z</option>
-                    <option value="z-a">Z - A</option>
-                </select>
-            </div>
-            <div class="busca">
-                <input type="text" id="inputBusca" placeholder="Buscar">
-                <button class="botaoBusca" id="botaoBusca"><img src="/src/lupa.png" alt="icone de pesquisa"></button>
-            </div>
-        </div>
-
-        <div class="div__principal__produtos">
-            <section class="galeria">
-        </div>
-        </section>
-    </div>
-    </div>
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal">
-            <div class="modal-header">
-                <span class="modal-close" id="modalClose">&times;</span>
-            </div>
-            <div class="modal-content" id="modalContent"></div>
-        </div>
+    <div class="container criar-conta-container">
+        <h2>Criar Conta</h2>
+        <form id="signupForm" class="signup-form">
+            <label for="nome">Nome:</label>
+            <input autofocus type="text" id="nome" name="nome" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+            <label for="senhaConfirmar">Confirme sua senha:</label>
+            <input type="password" id="senhaConfirmar" name="senhaConfirmar" required>
+            <button type="submit">Criar Conta</button>
+        </form>
+        <p>Já tem uma conta? <a href="login.html">Faça login!</a></p>
     </div>
     <footer>
         <div class="footer__content">
