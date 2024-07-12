@@ -49,7 +49,7 @@ export async function favoritarProduto(produto) {
             },
             body: JSON.stringify(produto)
         };
-        const response = await fetch(`${url}/favoritos/${index?`${produto._id}`:''}`, options);
+        const response = await fetch(`${url}/favoritos/${index ? `${produto._id}` : ''}`, options);
         if (!response.ok) {
             throw new Error('Erro ao atualizar favoritos');
         }
@@ -123,7 +123,7 @@ export async function renderizarProdutosFavoritos(listaProdutos, classeHtml) {
         const informacoes = document.createElement('div');
         informacoes.classList.add('informacoes');
         informacoes.innerHTML = `
-        <h2> ${produto.produtoId.nome}</>
+        <h2> ${produto.produtoId.nome}</h2>
             <h3 class="informacoes__descricao">${produto.produtoId.descricao}</h3>
             <p class="informacoes__preco">R$ ${formatarPreco(produto.produtoId.preco)}</p>
             <button class="botao__informacoes">Comprar</button>
@@ -131,7 +131,7 @@ export async function renderizarProdutosFavoritos(listaProdutos, classeHtml) {
 
         informacoes.querySelector('.botao__informacoes').addEventListener('click', () => {
             openModal(`
-            <h2 class="modal_texto"> Produto adicionado ao carrinho!</>
+            <h2 class="modal_texto"> Produto adicionado ao carrinho!</h2>
         <div class="modal__div__principal">
             <div class="modal__img"><img src="${produto.produtoId.src}" alt="imagem do produto">
                 <div class="modal__nome"> <h3>${produto.produtoId.nome}</h3>
