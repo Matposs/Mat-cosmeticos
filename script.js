@@ -64,7 +64,7 @@ async function carregarProdutos() {
     const listaDestaque = document.querySelector('.destaque__lista');
 
     produtoPrincipal.innerHTML = `
-        <h1 class= "h1__esquerda" > Nosso queridinho do mês!</>
+        <h1 class= "h1__esquerda"> Nosso queridinho do mês!</h1>
         <div class="produto__imagem">
             <img src="${produtoEmDestaque.src}" alt="${produtoEmDestaque.nome}">
             <div class="produto__nome">${produtoEmDestaque.nome}</div>
@@ -77,7 +77,7 @@ async function carregarProdutos() {
     `;
     produtoPrincipal.querySelector('.botao__informacoes').addEventListener('click', () => {
         openModal(`
-        <h2 class="modal_texto" > Produto adicionado no seu carrinho!</ > <div class="modal__div__principal">
+        <h2 class="modal_texto"> Produto adicionado no seu carrinho!</h2> <div class="modal__div__principal">
             <div class="modal__img"><img src="${produtoEmDestaque.src}" alt="imagem do produto">
                 <div class="modal__nome"> <h3>${produtoEmDestaque.nome}</h3>
                     <h4>${produtoEmDestaque.descricao}</h4>
@@ -88,7 +88,7 @@ async function carregarProdutos() {
             </div>
             <div class="modal__botoes">
                 <button id="modal__botoes__return">Continuar Comprando</button>
-                <button id="modal__botoes__sacola">Ir para a sacola ></button>
+                <button id="modal__botoes__sacola">Ir para a sacola></button>
             </div>
         </div>
     `);
@@ -110,7 +110,7 @@ async function carregarProdutos() {
         const item = document.createElement('div');
         item.className = 'produto__destaque__item';
         item.innerHTML = `
-        <img src = "${produto.src}" alt = "${produto.nome}" >
+        <img src = "${produto.src}" alt = "${produto.nome}">
             <div>${produto.nome}</div>
     `;
         item.addEventListener('click', () => atualizarDestaque(produto));
@@ -132,7 +132,7 @@ function atualizarDestaque(produto) {
     const destaqueComprar = document.getElementById('destaque__comprar');
     destaqueComprar.addEventListener('click', () => {
         openModal(`
-        <h2 class="modal_texto" > Produto adicionado no seu carrinho!</ > <div class="modal__div__principal">
+        <h2 class="modal_texto"> Produto adicionado no seu carrinho!</h2> <div class="modal__div__principal">
             <div class="modal__img"><img src="${produto.src}" alt="imagem do produto">
                 <div class="modal__nome"> <h3>${produto.nome}</h3>
                     <h4>${produto.descricao}</h4>
@@ -143,7 +143,7 @@ function atualizarDestaque(produto) {
             </div>
             <div class="modal__botoes">
                 <button id="modal__botoes__return">Continuar Comprando</button>
-                <button id="modal__botoes__sacola">Ir para a sacola ></button>
+                <button id="modal__botoes__sacola">Ir para a sacola></button>
             </div>
         </div>
     `);

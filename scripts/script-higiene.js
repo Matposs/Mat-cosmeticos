@@ -20,7 +20,7 @@ async function carregarProdutos() {
 
 document.getElementById('selectOrdenacao').addEventListener('change', (event) => {
     const valorOrdenacao = event.target.value;
-    const listaOrdenada = ordenarProdutos(valorOrdenacao, produtosHigiene);
+    const listaOrdenada = ordenarProdutos(valorOrdenacao, "higiene");
     renderizarProdutos(listaOrdenada, galeria);
 });
 

@@ -19,7 +19,7 @@ async function carregarProdutos() {
 }
 document.getElementById('selectOrdenacao').addEventListener('change', (event) => {
     const valorOrdenacao = event.target.value;
-    const listaOrdenada = ordenarProdutos(valorOrdenacao, produtosCabelo);
+    const listaOrdenada = ordenarProdutos(valorOrdenacao, "cabelo");
     renderizarProdutos(listaOrdenada, galeria);
 });
 botaoBusca.addEventListener('click', () => {

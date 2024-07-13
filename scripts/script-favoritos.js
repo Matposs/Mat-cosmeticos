@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('token');
     if (window.location.pathname === '/views/favoritos.html') {
         if (!token) {
+            localStorage.removeItem('token');
             window.location.href = '/views/login.html';
             return;
         }
@@ -199,7 +200,12 @@ modalOverlay.addEventListener('click', (event) => {
 
 function adicionarProdutoAoCarrinho(produto) {
     let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-    const index = carrinho.findIndex(item => item.nome === produto.nome);
+    let index = 0;
+    if (produto.produtoId) {
+        index = carrinho.findIndex(item => item.nome === produto.produtoId.nome);
+    } else {
+        index = carrinho.findIndex(item => item.nome === produto.nome);
+    }
     if (index !== -1) {
         carrinho[index].quantidade++;
     } else {

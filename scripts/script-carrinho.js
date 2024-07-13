@@ -70,6 +70,7 @@ function criarProdutoCard(produto) {
     `;
     return card;
 }
+
 function atualizarPrecoProduto(produto) {
     const produtoNome = produto.nome || produto.produtoId.nome;
     const produtoNomeSanitizado = produtoNome.replace(/\s+/g, '-').replace(/[^\w-]/g, '');
@@ -80,6 +81,7 @@ function atualizarPrecoProduto(produto) {
     const precoElemento = document.querySelector(`#quantidade-${produtoNomeSanitizado}`).closest('.carrinho__item').querySelector('.carrinho__item__info__preco p');
     precoElemento.innerText = `R$${formatarPreco(precoProdutoTotal)}`;
 }
+
 async function carregarJson(caminho) {
     const response = await fetch(caminho);
     const data = await response.json();
@@ -94,7 +96,7 @@ function atualizarPosicaoSlide() {
 }
 
 function proximoSlide() {
-    if (currentIndex < produtosCarrossel.children.length - 4) { // Avança até o quarto item antes do fim
+    if (currentIndex < produtosCarrossel.children.length - 4) {
         currentIndex++;
     } else {
         currentIndex = 0;
@@ -218,83 +220,43 @@ function adicionarProdutoAoCarrinho(produto) {
     if (index !== -1) {
         carrinho[index].quantidade++;
     } else {
-        carrinho.push({ ...produto, quantidade: 1 });
+        produto.quantidade = 1;
+        carrinho.push(produto);
     }
 
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
-    const carrinhoItens = document.querySelector('.carrinho__cheio__itens');
-    carrinhoItens.innerHTML = '';
+    calcularPrecoTotal();
     criarCarrinhoCheio();
-    calcularPrecoTotal();
-}
-function removerProdutoCarrinho(produto) {
-    const index = carrinho.findIndex(item => item.nome || item.produtoId.nome === produto.nome || produto.produtoId.nome);
-    if (index !== -1) {
-        if (confirm("Deseja excluir?")) {
-            carrinho.splice(index, 1);
-            localStorage.removeItem('carrinho', JSON.stringify(carrinho));
-            const carrinhoItens = document.querySelector('.carrinho__cheio__itens');
-            carrinhoItens.innerHTML = '';
-            criarCarrinhoCheio();
-            calcularPrecoTotal();
-            if (carrinho.length == 0) location.reload();
-        } else {
-            return
-        }
-    } else {
-        console.error('Produto não encontrado no carrinho:', produto);
-    }
-}
-
-function calcularPrecoTotal() {
-    precoTotal = 0;
-    carrinho.forEach(produto => {
-        const quantidade = produto.quantidade || produto.produtoId.quantidade;
-        const preco = produto.preco || produto.produtoId.preco;
-        precoTotal += preco * quantidade;
-    });
-    document.querySelector('.preco__total h2').innerText = `Preço Total: R$${formatarPreco(precoTotal)}`;
-}
-function atualizarQuantidade(event, produtoAtualizado) {
-    produtoAtualizado.quantidade = parseInt(event.target.value);
-    localStorage.setItem('carrinho', JSON.stringify(carrinho));
-    atualizarPrecoProduto(produtoAtualizado);
-    calcularPrecoTotal();
 }
 
 function vincularEventosQuantidade() {
-    carrinho.forEach(produto => {
-        let produtoRenomeavel = '';
-        if (!produto) {
-            console.error("Produto inválido ou sem nome:", produto);
-            return;
-        } else if (produto.produtoId) {
-            produtoRenomeavel = produto.produtId.nome.replace(/\s+/g, '-').replace(/[^\w-]/g, '');
-        }
-        else if (produto.nome) {
-            produtoRenomeavel = produto.nome.replace(/\s+/g, '-').replace(/[^\w-]/g, '');
-        }
-        else {
-            console.error("Produto inválido ou sem nome:", produto);
-            return;
-        }
-        const produtoNomeRegex = produtoRenomeavel;
-        const selectQuantidade = document.querySelector(`#quantidade-${produtoNomeRegex}`);
-        if (selectQuantidade) {
-            selectQuantidade.addEventListener('change', (event) => atualizarQuantidade(event, produto));
-        } else {
-            console.error("Elemento select não encontrado para o produto:", produto);
-        }
+    const selectElements = document.querySelectorAll('.carrinho__item__info__quantidade select');
+    const removeButtons = document.querySelectorAll('.remover');
+
+    selectElements.forEach(select => {
+        select.addEventListener('change', (e) => {
+            const produtoNome = e.target.closest('.carrinho__item').querySelector('#item__nome').innerText;
+            atualizarQuantidade(produtoNome, e.target.value);
+        });
+    });
+
+    removeButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const produtoNome = e.target.dataset.nome;
+            removerProdutoCarrinho(produtoNome);
+        });
     });
 }
-document.addEventListener('click', (event) => {
-    if (event.target.classList.contains('remover')) {
-        const produtoNome = event.target.dataset.nome;
-        const produto = carrinho.find(item => item.nome || item.produtoId.nome === produtoNome);
-        removerProdutoCarrinho(produto);
-    }
-});
 
+function atualizarQuantidade(nomeProduto, novaQuantidade) {
+    const produto = carrinho.find(item => (item.nome || item.produtoId.nome) === nomeProduto);
+    if (produto) {
+        produto.quantidade = parseInt(novaQuantidade, 10);
+        atualizarPrecoProduto(produto);
+        localStorage.setItem('carrinho', JSON.stringify(carrinho));
+        calcularPrecoTotal();
+    }
+}
 const modalOverlay = document.getElementById('modalOverlay');
 const modalClose = document.getElementById('modalClose');
 const modalContent = document.getElementById('modalContent');
@@ -323,19 +285,46 @@ modalOverlay.addEventListener('click', (event) => {
     }
 });
 
-function aplicarCupom() {
-    const cupom = document.getElementById('cupom').value;
-    const precoTotalElement = document.querySelector('.preco__total h2');
-    const precoTotalSemDesconto = precoTotal;
-    let precoComDesconto = precoTotal;
+function removerProdutoCarrinho(nomeProduto) {
+    const index = carrinho.findIndex(item => (item.nome || item.produtoId.nome) === nomeProduto);
+    if (index !== -1) {
+        carrinho.splice(index, 1);
+        localStorage.setItem('carrinho', JSON.stringify(carrinho));
+        if (carrinho.length > 0) {
+            criarCarrinhoCheio();
+        }
+        else {
+            window.location.reload();
+        }
+    }
+}
 
-    if (cupom === '20OFF') {
-        precoComDesconto = precoTotal * 0.8;
-        precoTotalElement.innerHTML = `
-            <span style="text-decoration: line-through;">${formatarPreco(precoTotalSemDesconto)}</span>
-            <span style="color: green; margin-left: 10px;"><br> Preço total: R$${formatarPreco(precoComDesconto)}</span>
-        `;
+function calcularPrecoTotal() {
+    const carrinhoCheio = document.querySelector('.carrinho__cheio');
+    const precoTotalElemento = carrinhoCheio.querySelector('.preco__total h2');
+    const precoTotal = carrinho.reduce((total, produto) => {
+        const preco = produto.preco || produto.produtoId.preco;
+        return total + (preco * (produto.quantidade || produto.produtoId.quantidade));
+    }, 0);
+    precoTotalElemento.innerText = `Preço Total: R$${formatarPreco(precoTotal)}`;
+}
+
+function aplicarCupom() {
+    const cupomInput = document.querySelector('#cupom');
+    const cupomValor = cupomInput.value.trim().toUpperCase();
+    const desconto = cupomValor === '20OFF' ? 0.20 : 0;
+    const carrinhoCheio = document.querySelector('.carrinho__cheio');
+    const precoTotalElemento = carrinhoCheio.querySelector('.preco__total h2');
+    const precoTotalOriginal = carrinho.reduce((total, produto) => {
+        const preco = produto.preco || produto.produtoId.preco;
+        return total + (preco * (produto.quantidade || produto.produtoId.quantidade));
+    }, 0);
+
+    const precoComDesconto = precoTotalOriginal * (1 - desconto);
+    if (desconto == 0) {
+        return
     } else {
-        alert('Cupom inválido!');
+        precoTotalElemento.innerHTML = `<span style="text-decoration: line-through;">${formatarPreco(precoTotalOriginal)}</span>
+            <span style="color: green; margin-left: 10px;"><br> Preço total: R$${formatarPreco(precoComDesconto)}</span>`;
     }
 }
