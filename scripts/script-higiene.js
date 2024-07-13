@@ -18,9 +18,9 @@ async function carregarProdutos() {
 }
 
 
-document.getElementById('selectOrdenacao').addEventListener('change', (event) => {
+document.getElementById('selectOrdenacao').addEventListener('change', async (event) => {
     const valorOrdenacao = event.target.value;
-    const listaOrdenada = ordenarProdutos(valorOrdenacao, "higiene");
+    const listaOrdenada = await ordenarProdutos(valorOrdenacao, "higiene");
     renderizarProdutos(listaOrdenada, galeria);
 });
 

@@ -17,9 +17,9 @@ async function carregarProdutos() {
     }
 }
 
-document.getElementById('selectOrdenacao').addEventListener('change', (event) => {
+document.getElementById('selectOrdenacao').addEventListener('change', async (event) => {
     const valorOrdenacao = event.target.value;
-    const listaOrdenada = ordenarProdutos(valorOrdenacao, "maquiagem");
+    const listaOrdenada = await ordenarProdutos(valorOrdenacao, "maquiagem");
     renderizarProdutos(listaOrdenada, galeria);
 });
 

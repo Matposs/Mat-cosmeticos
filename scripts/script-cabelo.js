@@ -17,9 +17,9 @@ async function carregarProdutos() {
         console.error("Erro ao carregar os produtos de API: ", error);
     }
 }
-document.getElementById('selectOrdenacao').addEventListener('change', (event) => {
+document.getElementById('selectOrdenacao').addEventListener('change', async (event) => {
     const valorOrdenacao = event.target.value;
-    const listaOrdenada = ordenarProdutos(valorOrdenacao, "cabelo");
+    const listaOrdenada = await ordenarProdutos(valorOrdenacao, "cabelo");
     renderizarProdutos(listaOrdenada, galeria);
 });
 botaoBusca.addEventListener('click', () => {
