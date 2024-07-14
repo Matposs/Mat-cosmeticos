@@ -288,14 +288,18 @@ modalOverlay.addEventListener('click', (event) => {
 function removerProdutoCarrinho(nomeProduto) {
     const index = carrinho.findIndex(item => (item.nome || item.produtoId.nome) === nomeProduto);
     if (index !== -1) {
-        carrinho.splice(index, 1);
-        localStorage.setItem('carrinho', JSON.stringify(carrinho));
-        if (carrinho.length > 0) {
-            criarCarrinhoCheio();
+        const confirmacao = confirm(`Você realmente deseja excluir o produto "${nomeProduto}" do seu carrinho?`);
+        if (confirmacao) {
+            carrinho.splice(index, 1);
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            if (carrinho.length > 0) {
+                criarCarrinhoCheio();
+            }
+            else {
+                window.location.reload();
+            }
         }
-        else {
-            window.location.reload();
-        }
+        else return
     }
 }
 
