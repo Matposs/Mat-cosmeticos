@@ -4,6 +4,7 @@ import { URL_TESTE, URL_DESENV, URL_PROD } from '../config/config.js';
 
 export async function renderizarProdutos(listaProdutos, classeHtml) {
     const token = localStorage.getItem('token');
+    let favoritos = [];
     if (token) {
         try {
             const response = await fetch(`${URL_PROD}/favoritos`, {
@@ -19,25 +20,30 @@ export async function renderizarProdutos(listaProdutos, classeHtml) {
             console.error('Erro ao carregar favoritos:', error);
         }
     }
+
     classeHtml.innerHTML = "";
-    listaProdutos.forEach(async (produto) => {
+    const promises = listaProdutos.map(async (produto) => {
         const div = document.createElement('div');
         div.classList.add('coluna');
+
         const img = document.createElement('img');
         img.src = produto.src;
+
         const divImg = document.createElement('div');
         divImg.classList.add('coluna__imagem');
+
         const favoritosButton = document.createElement('button');
         favoritosButton.classList.add('botao__favoritar');
+
         const favorito = await isFavoritado(produto);
         const src = favorito ? "/src/favorites__filled.png" : "/src/favorites.png";
-        favoritosButton.innerHTML =
-            `<img src="${src}" alt="ícone de favoritar">`;
-        ;
+        favoritosButton.innerHTML = `<img src="${src}" alt="ícone de favoritar">`;
+
         favoritosButton.addEventListener('click', (event) => {
             event.stopPropagation();
             favoritarProduto(produto);
         });
+
         const informacoes = document.createElement('div');
         informacoes.classList.add('informacoes');
         informacoes.innerHTML = `
@@ -46,6 +52,7 @@ export async function renderizarProdutos(listaProdutos, classeHtml) {
             <p class="informacoes__preco">R$ ${formatarPreco(produto.preco)}</p>
             <button class="botao__informacoes">Comprar</button>
         `;
+
         informacoes.querySelector('.botao__informacoes').addEventListener('click', () => {
             openModal(`
                 <h2 class="modal_texto">Produto adicionado ao carrinho!</h2>
@@ -80,6 +87,11 @@ export async function renderizarProdutos(listaProdutos, classeHtml) {
         divImg.appendChild(img);
         divImg.appendChild(favoritosButton);
         div.appendChild(informacoes);
+
+        return div;
+    });
+    const divs = await Promise.all(promises);
+    divs.forEach(div => {
         classeHtml.appendChild(div);
     });
 }
